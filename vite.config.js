@@ -13,9 +13,10 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://tradelog-server-mf6g.onrender.com',
         changeOrigin: true,
       },
     },
   },
 })
+
