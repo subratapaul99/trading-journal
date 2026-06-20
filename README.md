@@ -105,3 +105,4 @@ cd server && node src/utils/seed.js
 - **Frontend** → Vercel (`npm run build`, deploy `dist/`)
 - **Backend** → Railway or Render (`node src/index.js`)
 - **Database** → MongoDB Atlas (`MONGO_URI=mongodb+srv://...`)
+test 
