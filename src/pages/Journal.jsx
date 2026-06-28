@@ -79,9 +79,9 @@ export default function Journal() {
   }
 
   return (
-    <div className="flex gap-5 max-w-7xl mx-auto h-full" style={{ minHeight: '70vh' }}>
+    <div className="flex flex-col md:flex-row gap-5 max-w-7xl mx-auto h-full" style={{ minHeight: '70vh' }}>
       {/* Sidebar: entry list */}
-      <div className="w-64 flex-shrink-0 flex flex-col gap-3">
+      <div className="w-full md:w-64 flex-shrink-0 flex flex-col gap-3">
         <button
           onClick={() => { setIsWriting(true); setSelected(null) }}
           disabled={hasEntryToday && !isWriting}
@@ -91,7 +91,7 @@ export default function Journal() {
           {hasEntryToday ? '✓ Entry logged today' : '+ Write today\'s entry'}
         </button>
 
-        <div className="flex flex-col gap-2 overflow-y-auto">
+        <div className="flex flex-col gap-2 overflow-y-auto max-h-48 md:max-h-none">
           {entries.map(entry => (
             <button
               key={entry._id}
@@ -129,7 +129,7 @@ export default function Journal() {
       {/* Main area */}
       <div className="flex-1 rounded-xl overflow-hidden" style={card}>
         {isWriting ? (
-          <div className="flex flex-col h-full p-6 gap-4">
+          <div className="flex flex-col h-full p-4 md:p-6 gap-4" style={{ minHeight: '500px' }}>
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
@@ -143,7 +143,7 @@ export default function Journal() {
             {/* Mood selector */}
             <div>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: 'var(--text-secondary)' }}>Mood</p>
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3 flex-wrap">
                 {MOODS.map(m => (
                   <button
                     key={m.label}
@@ -184,7 +184,7 @@ export default function Journal() {
               />
             </div>
 
-            <div className="flex justify-end gap-3">
+            <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <button onClick={() => setIsWriting(false)}
                 className="px-4 py-2 rounded-lg text-sm"
                 style={{ color: 'var(--text-secondary)', border: '1px solid var(--border)' }}>
@@ -198,7 +198,7 @@ export default function Journal() {
             </div>
           </div>
         ) : selected ? (
-          <div className="p-6 flex flex-col gap-5">
+          <div className="p-4 md:p-6 flex flex-col gap-5">
             <div className="flex items-start justify-between">
               <div>
                 <h2 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>
@@ -252,3 +252,4 @@ export default function Journal() {
     </div>
   )
 }
+
